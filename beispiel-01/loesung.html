@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Annotorious DHd | Beispiel 1</title>
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.css">
+
+    <!-- Annotorious JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.js"></script>
+  </head>
+  <body>
+    <h1>Annotorious: Beispiel 1</h1>  
+
+    <img id="hallstatt" src="640px-Hallstatt.jpg">
+    
+    <!-- Eigenes script: initialisiert Annotorious auf dem Bild mit id='hallstatt' -->
+    <script>
+      window.onload = function() {
+        var anno = Annotorious.init({
+          image: 'hallstatt'
+        });
+      }
+    </script>
+  </body>
+</html>
