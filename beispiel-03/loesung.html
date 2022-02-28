@@ -9,12 +9,36 @@
   </head>
   <body>
     <h1>Annotorious: Beispiel 3</h1>  
+
+    <p>
+      <button id="tool-rechteck">Rechteck</button>
+      <button id="tool-polygon">Polygon</button>
+      <button id="visible">Ein/Ausblenden</button>
+    </p>
+
     <img id="hallstatt" src="640px-Hallstatt.jpg">
 
     <script>
       window.onload = function() {
         var anno = Annotorious.init({
-          image: 'hallstatt'
+          image: 'hallstatt',
+          allowEmpty: true,
+          locale: 'de'
+        });
+
+        document.getElementById('tool-rechteck').addEventListener('click', function() {
+          anno.setDrawingTool('rectangle');
+        });
+
+        document.getElementById('tool-polygon').addEventListener('click', function() {
+          anno.setDrawingTool('polygon');
+        });
+
+        var visible = true;
+
+        document.getElementById('visible').addEventListener('click', function() {
+          visible = !visible;
+          anno.setVisible(visible);
         });
       }
     </script>
