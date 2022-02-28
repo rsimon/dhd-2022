@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="751759236828-r5c54upls7q0cs5d9nc554uor8719fat">
+    <title>Annotorious DHd | Beispiel 7</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  </head>
+  <body>
+    <h1>Annotorious: Beispiel 7</h1>  
+    <p>
+        <div class="g-signin2" data-onsuccess="onSignIn">foo</div>
+    </p>
+
+    <img id="hallstatt" src="640px-Hallstatt.jpg">
+
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+      }
+
+      window.onload = function() {
+        var anno = Annotorious.init({
+          image: 'hallstatt'
+        });
+      }
+    </script>
+  </body>
+</html>
