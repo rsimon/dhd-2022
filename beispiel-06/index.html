@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Annotorious OpenSeadragon Example</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.2/dist/annotorious.min.css">
+    <style>
+      html, body {
+        margin:0;
+        padding:0;
+        background-color:#e2e2e2;
+        height:100%;
+        font-family:Lato;
+        line-height:160%;
+      }
+      
+      .column {
+        max-width:700px;
+        padding:20px;
+        margin:0 auto;
+        background-color:#fff;
+        height:100%;
+        box-sizing:border-box;
+      }
+
+      h1 {
+        font-size:21px;
+        font-weight:normal;
+        margin:0;
+        padding:0;
+      }
+
+      p.instructions {
+        padding:10px 0 30px 0;
+      }
+
+      .openseadragon-canvas {
+        outline:none;
+        background-color:#efefef !important;
+      }
+
+      .a9s-selection-mask {
+        display:none;
+      }
+    </style>
+    <script>
+      var viewer
+      var selectedFiles = []
+      function changeImage() {
+        // get the selected Item
+        var e = document.getElementById("select");
+        var image = e.options[e.selectedIndex].value;
+        // reset OSD
+        if (viewer){
+          viewer.destroy()
+        }
+        // initiate OSD with new picture
+        viewer = OpenSeadragon({
+          id: "openseadragon",
+          prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.1/images/",
+          tileSources: {
+            type: "image",
+            url: image
+          },
+          gestureSettingsTouch: {
+            pinchRotate: true
+          },
+          showRotationControl: true,
+          showFlipControl: true,
+          constrainDuringPan: true,
+        });
+        // initiate Annotorious
+        var anno = OpenSeadragon.Annotorious(viewer, {
+          locale: 'auto',
+          drawOnSingleClick: true,
+          allowEmpty: true
+        });
+        anno.setDrawingTool('polygon');
+        anno.setDrawingEnabled(true);
+        // load stored annotations
+        let ls = JSON.parse(localStorage.getItem("annotations"))
+        // choose annotations for chose image if existing
+        if (ls[e.options[e.selectedIndex].text]){
+          for (var prop in ls[e.options[e.selectedIndex].text]) {
+            anno.addAnnotation(ls[e.options[e.selectedIndex].text][prop])
+          }
+        }
+        // save annotations
+        var saveBtn = document.getElementById('saveAnnos');
+        saveBtn.addEventListener('click', function() {
+			    var a = document.createElement("a");
+          var annos = anno.getAnnotations();
+			    a.href = window.URL.createObjectURL(new Blob([localStorage["annotations"]], {type: "text/plain"}));
+          var e = document.getElementById("select");
+          var fileName = "annotations.json"
+
+			    a.download = fileName;
+			    a.click(); 
+        });
+
+
+
+        anno.on('createAnnotation', function(a, overrideId) {
+          // get selected picture
+          var e = document.getElementById("select");
+          var fileName = e.options[e.selectedIndex].text
+          // get stored annotations and add new
+          let ls = JSON.parse(localStorage.getItem("annotations"))
+          if (ls[fileName]){
+            ls[fileName][a.id] = a
+          } else {
+            ls[fileName] = {}
+            console.log(ls[fileName]);
+            ls[fileName][a.id] = a
+          }
+          // store annotations back into local storage
+          localStorage.setItem("annotations", JSON.stringify(ls))
+        });
+
+        anno.on('updateAnnotation', function(annotation, previous) {
+          // get selected pictures
+          var e = document.getElementById("select");
+          var fileName = e.options[e.selectedIndex].text
+          // load stored annotations and change updated annotation
+          let ls = JSON.parse(localStorage.getItem("annotations"))
+          ls[fileName][a.id] = a
+          // store back into local storage
+          localStorage.setItem("annotations", JSON.stringify(ls))
+        });
+
+        anno.on('selectAnnotation', function(annotation, shape) {
+          console.log('selected');
+        });
+
+        anno.on('deleteAnnotation', function(annotation) {
+          // get selected pictures
+          var e = document.getElementById("select");
+          var fileName = e.options[e.selectedIndex].text
+          // load stored annotations and change updated annotation
+          let ls = JSON.parse(localStorage.getItem("annotations"))
+          // delete annotation
+          delete localStorage.getItem("annotations")[fileName][a.id]
+          // store back into local storage
+          localStorage.setItem("annotations", JSON.stringify(ls))
+          
+        });
+
+        anno.on('cancelSelected', function(a) {
+          console.log('cancelSelected');
+        });
+
+        anno.on('mouseEnterAnnotation', function(annotation, shape) {
+          console.log('mouseEnter');
+        });
+
+        anno.on('mouseLeaveAnnotation', function(annotation, shape) {
+          console.log('mouseLeave');
+        });
+    }
+      window.onload = function() {
+        // initiate local storeage if not already initiated
+        if (localStorage.getItem("annotations") === null){
+          localStorage.setItem("annotations", JSON.stringify({}))
+        }
+        // set chose directory event
+        var loadImages = document.getElementById('loadImages');
+        loadImages.addEventListener('change', function() {   
+          selectedFiles = event.target.files;
+          console.log("event", event);
+          let select = document.getElementById('select')
+          var i, L = select.options.length - 1;
+          for(i = L; i >= 0; i--) {
+              select.remove(i);
+          }
+          for (var item of selectedFiles) {
+            console.log("webkitRelativePath", item.webkitRelativePath);
+            if (item.webkitRelativePath.endsWith("jpg")||item.webkitRelativePath.endsWith("jpeg")||item.webkitRelativePath.endsWith("png")||item.webkitRelativePath.endsWith("tiff")){
+              var o = document.createElement("option");
+              console.log("item", item);
+              o.value = item.webkitRelativePath
+              o.text = item.name;
+              select.appendChild(o);
+            }
+            changeImage()
+
+          }
+
+        });
+      }
+</script>
+  </head>
+  <body>
+    <div class="column">
+      <h1>Annotorious | OpenSeadragon Example</h1>
+      <p class="instructions">
+        Click the annotation to edit. Hold <strong>SHIFT</strong> while clicking and 
+        dragging the mouse to create a new annotation. 
+      </p>
+      <p>
+        <label for="file">Choose Directory for Annotation</label>
+        <input id="loadImages" type="file" webkitdirectory directory multiple ></input>
+      </p>
+      <p>
+        <label for="file">Selected Image: </label>
+        <select name="select" id="select" onchange="changeImage()"></select>
+        <button id="saveAnnos">Save Annotations</button>
+      </p>
+      <div id="openseadragon" style="width: 640px; height: 480px;"></div>
+    </div>      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/openseadragon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.2/dist/openseadragon-annotorious.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js"></script>
+  </body>
+</html>
