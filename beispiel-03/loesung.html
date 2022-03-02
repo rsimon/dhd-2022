@@ -40,6 +40,10 @@
           visible = !visible;
           anno.setVisible(visible);
         });
+
+        anno.on('createAnnotation', function(annotation) {
+          console.log(annotation);
+        });
       }
     </script>
   </body>
