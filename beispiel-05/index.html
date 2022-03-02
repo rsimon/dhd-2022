@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Annotorious DHd | Beispiel 5</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.2/dist/annotorious.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.2/dist/openseadragon-annotorious.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/openseadragon@3.0/build/openseadragon/openseadragon.min.js"></script>
+    <style>
+      html, body, #openseadragon {
+        width:100%;
+        height:100%;
+        padding:0;
+        margin:0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="openseadragon"></div>
+    <script>
+      // Selden map, Bodleian Library
+      // Source: https://digital.bodleian.ox.ac.uk/objects/58b9518f-d5ea-4cb3-aa15-f42640c50ef3/
+      var IMAGE_MANIFEST = "https://iiif.bodleian.ox.ac.uk/iiif/image/866462cc-d658-41da-a33d-5a8c375b1ac0/info.json";
+
+      window.onload = function() {
+        var viewer = OpenSeadragon({
+          id: "openseadragon",
+          prefixUrl: "https://cdnjs.cloudflare.com/ajax/libs/openseadragon/3.0.0/images/",
+          tileSources: [
+            IMAGE_MANIFEST
+          ],
+        });
+      }
+    </script>  
+</body>
+</html>
