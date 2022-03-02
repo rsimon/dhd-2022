@@ -6,22 +6,28 @@ Examples for the Annotorious workshop at the [DHd 2022 conference](https://www.d
 
 ## Agenda/Beispiele
 
-### Session 1:
+### Teil 1: Grundlagen
 
-- [Beispiel 1](https://github.com/recogito/dhd-2022/blob/main/beispiel-01/index.html). Annotorious auf einem Bild 
-  initialisieren.
+- [Beispiel 1](https://github.com/recogito/dhd-2022/blob/main/beispiel-01/index.html). Annotorious auf einem Bild initialisieren.
 - [Beispiel 2](https://github.com/recogito/dhd-2022/blob/main/beispiel-02/index.html). Annotationen laden & das W3C Web Annotation Format.
-- [Beispiel 3](https://github.com/recogito/dhd-2022/blob/main/beispiel-03/index.html). Die Annotorious JavaScript API.
-- [Beispiel 4](https://github.com/recogito/dhd-2022/blob/main/beispiel-04/index.html). Auf Events reagieren und Annotationen speichern.
-- [Beispiel 5](https://github.com/recogito/dhd-2022/blob/main/beispiel-05/index.html). Annotationen in der Cloud speichern.
-- [Beispiel 6](https://github.com/recogito/dhd-2022/blob/main/beispiel-06/index.html). Annotorious, OpenSeadragon und IIIF.
+- [Beispiel 3](https://github.com/recogito/dhd-2022/blob/main/beispiel-03/index.html). Die Annotorious JavaScript API: Initialisierung, programmatische Kontrolle (Zeichenwerkzeuge, Annotationen), Events.
+- [Beispiel 4](https://github.com/recogito/dhd-2022/blob/main/beispiel-04/index.html). Styling: SVG Darstellungskonvetionen und CSS-Regeln.
+- [Beispiel 5](https://github.com/recogito/dhd-2022/blob/main/beispiel-05/index.html). IIIF mit dem Annotorious OpenSeadragon plugin.
 
-### Session 2:
+### Teil 2: Fortgeschrittene Themen
 
-- [Beispiel 7](https://github.com/recogito/dhd-2022/blob/main/beispiel-07/index.html). Annotorious und Benutzermanagement.
-- [Beispiel 8](https://github.com/recogito/dhd-2022/blob/main/beispiel-08/index.html). Einbinden von Plugins: Beispiele Toolbar und Selector Pack.
-- [Beispiel 9](https://github.com/recogito/dhd-2022/blob/main/beispiel-09/index.html). Annotorious ohne den Editor: headless mode.
+- [Beispiel 6](https://github.com/recogito/dhd-2022/blob/main/beispiel-06/index.html). Auf Events reagieren und Annotationen speichern. Anwendungsbeispiel lokale Speicherung.
+- [Beispiel 7](https://github.com/recogito/dhd-2022/blob/main/beispiel-07/index.html). Annotationen in der Cloud speichern.
+- [Beispiel 8](https://github.com/recogito/dhd-2022/blob/main/beispiel-08/index.html). Annotationen und Login/Authentifizerung.
+- [Beispiel 9](https://github.com/recogito/dhd-2022/blob/main/beispiel-09/index.html). Plugins: Beispiele Toolbar, Selector Pack.
 
-### Session 3: (z.T. Selbstudium)
+### Weiterführendes Material
 
-- __Styling.__ Anpassen des visuellen Erscheinungsbilds - SVG Elemente, CSS, Shape Labels.
+- Den Editor anpassen und erweitern:
+  - Editor widgets configurieren: [Guide of annotorious.com](https://recogito.github.io/guides/configuring-the-editor/) 
+  - Editor widgets selbst entwickeln: [Guide auf annotorious.com](https://recogito.github.io/guides/configuring-the-editor/)
+- "Headless Mode": Annotorious ohne den Editor verwenden:
+  - [Guide auf annotorious.com](https://recogito.github.io/guides/headless-mode/)
+- "Formatters": dynamisches Styling von Annotationen
+  - [Interaktives Tutorial auf ObservableHQ](https://observablehq.com/@rsimon/writing-annotorious-formatters-pt-1) (Teil 1)
+  - [Interaktives Tutorial auf ObservableHQ](https://observablehq.com/@rsimon/writing-annotorious-formatters-pt-2) (Teil 2)
