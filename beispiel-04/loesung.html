@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Annotorious DHd | Beispiel 3</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.js"></script>
+    <style>
+      /** Entfernt die äusseren Shapes und Handles **/
+      svg.a9s-annotationlayer .a9s-selection .a9s-outer, 
+      svg.a9s-annotationlayer .a9s-annotation .a9s-outer {
+        display:none;
+      }
+
+      svg.a9s-annotationlayer .a9s-handle .a9s-handle-outer {
+        display:none;
+      }
+
+      /** Entfernt standard Hover-Effekt **/
+      svg.a9s-annotationlayer .a9s-annotation.editable:hover .a9s-inner {
+        fill:transparent;
+      }
+
+      /** Neuer Stil für die inneren Shapes und Handles **/
+      svg.a9s-annotationlayer .a9s-selection .a9s-inner,
+      svg.a9s-annotationlayer .a9s-annotation .a9s-inner  {
+        stroke-width:4;
+        stroke:white;
+        stroke-dasharray:5;
+      }
+
+      svg.a9s-annotationlayer .a9s-handle .a9s-handle-inner {
+        fill:white;
+        stroke:white;
+      }
+
+      /** Selektions-Maske **/
+      svg.a9s-annotationlayer .a9s-selection-mask {
+        fill:rgba(0, 0, 0, 0.6);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Annotorious: Beispiel 3</h1>  
+    <img id="hallstatt" src="640px-Hallstatt.jpg">
+
+    <script>
+      window.onload = function() {
+        var anno = Annotorious.init({
+          image: 'hallstatt'
+        });
+      }
+    </script>
+  </body>
+</html>
