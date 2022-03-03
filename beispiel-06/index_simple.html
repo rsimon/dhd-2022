@@ -114,7 +114,7 @@
           localStorage.setItem("annotations", JSON.stringify(ls))
         });
 
-        anno.on('updateAnnotation', function(annotation, previous) {
+        anno.on('updateAnnotation', function(a, previous) {
           // load stored annotations and change updated annotation
           let ls = JSON.parse(localStorage.getItem("annotations"))
           ls[imageName][a.id] = a
@@ -122,11 +122,11 @@
           localStorage.setItem("annotations", JSON.stringify(ls))
         });
 
-        anno.on('selectAnnotation', function(annotation, shape) {
+        anno.on('selectAnnotation', function(a, shape) {
           console.log('selected');
         });
 
-        anno.on('deleteAnnotation', function(annotation) {
+        anno.on('deleteAnnotation', function(a) {
           // load stored annotations and change updated annotation
           let ls = JSON.parse(localStorage.getItem("annotations"))
           // delete annotation
@@ -140,11 +140,11 @@
           console.log('cancelSelected');
         });
 
-        anno.on('mouseEnterAnnotation', function(annotation, shape) {
+        anno.on('mouseEnterAnnotation', function(a, shape) {
           console.log('mouseEnter');
         });
 
-        anno.on('mouseLeaveAnnotation', function(annotation, shape) {
+        anno.on('mouseLeaveAnnotation', function(a, shape) {
           console.log('mouseLeave');
         });
 
@@ -163,7 +163,7 @@
       </p>
       <div id="openseadragon" style="width: 640px; height: 480px;"></div>
     </div>      
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/2.4.2/openseadragon.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openseadragon/3.0.0/openseadragon.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-openseadragon@2.7.2/dist/openseadragon-annotorious.min.js"></script>
     <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/BrowserFS/2.0.0/browserfs.min.js"></script>
