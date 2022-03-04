@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="751759236828-r5c54upls7q0cs5d9nc554uor8719fat">
+    <title>Annotorious DHd | Beispiel 9</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.5.9/dist/annotorious.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.5.9/dist/annotorious.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-toolbar@latest/dist/annotorious-toolbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious-selector-pack@0.5.3/dist/annotorious-selector-pack.min.js"></script>
+  </head>
+  <body>
+    <h1>Annotorious: Beispiel 8</h1>  
+
+    <div id="my-toolbar-container"></div>
+
+    <img id="hallstatt" src="640px-Hallstatt.jpg">
+
+    <script>
+      window.onload = function() {
+        var anno = Annotorious.init({
+          image: 'hallstatt'
+        });
+
+        Annotorious.SelectorPack(anno);
+        Annotorious.Toolbar(anno, document.getElementById('my-toolbar-container'));
+      }
+    </script>
+  </body>
+</html>
