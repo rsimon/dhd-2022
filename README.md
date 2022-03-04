@@ -20,6 +20,7 @@ Examples for the Annotorious workshop at the [DHd 2022 conference](https://www.d
 - [Beispiel 7](https://github.com/recogito/dhd-2022/blob/main/beispiel-07/index.html). Annotationen in der Cloud speichern.
 - [Beispiel 8](https://github.com/recogito/dhd-2022/blob/main/beispiel-08/index.html). Annotationen und Login/Authentifizerung.
 - [Beispiel 9](https://github.com/recogito/dhd-2022/blob/main/beispiel-09/index.html). Plugins: Beispiele Toolbar, Selector Pack.
+- [Beispiel 10](https://github.com/recogito/dhd-2022/blob/main/beispiel-09/index.html). Annotorious für Machine Learning Ground Truth.
 
 ### Weiterführendes Material
 
