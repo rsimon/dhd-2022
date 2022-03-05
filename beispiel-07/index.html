@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="google-signin-client_id" content="751759236828-r5c54upls7q0cs5d9nc554uor8719fat">
+    <title>Annotorious DHd | Beispiel 7</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@recogito/annotorious@2.7.2/dist/annotorious.min.js"></script>
+  </head>
+  <body>
+    <h1>Annotorious: Beispiel 7</h1>  
+
+    <img id="hallstatt" src="640px-Hallstatt.jpg">
+
+    <script>
+      window.onload = function() {
+        var anno = Annotorious.init({
+          image: 'hallstatt'
+        });
+
+        anno.on('createAnnotation', function(annotation) {
+          console.log(annotation);
+        });
+
+        anno.on('updateAnnotation', function(annotation) {
+          console.log(annotation);
+        });
+
+        anno.on('deleteAnnotation', function(annotation) {
+          console.log(annotation);
+        });
+      }
+    </script>
+  </body>
+</html>
