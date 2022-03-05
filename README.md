@@ -22,6 +22,13 @@ Examples for the Annotorious workshop at the [DHd 2022 conference](https://www.d
 - [Beispiel 9](https://github.com/recogito/dhd-2022/blob/main/beispiel-09/index.html). Plugins: Beispiele Toolbar, Selector Pack.
 - [Beispiel 10](https://github.com/recogito/dhd-2022/blob/main/beispiel-10/annotoriousToCoCo.py). Annotorious für Machine Learning Ground Truth.
 
+__ACHTUNG:__ die fortgeschrittenen Beispiele erfordern zum Teil die Verwendung eines __lokalen HTTP Servers auf ihrem Rechner__. Eine Vielzahl von
+Programmierumgebungen enthält dafür einfache Utilities. Folgende Möglichkeiten stehen auf ihrem Rechner vielleicht schon zur Verfügung:
+
+- Falls Sie PHP Installiert haben: `php -S localhost:8080` 
+- Falls sie Python installiert haben: `python -m SimpleHTTPServer 8080` 
+- Falls sie Node.js installiert haben: `http-server` (ggf. per `npm install -g http-server`  installieren)
+
 ### Weiterführendes Material
 
 - Den Editor anpassen und erweitern:
