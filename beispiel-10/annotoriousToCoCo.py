@@ -280,7 +280,7 @@ class CocoDataset():
 
 pp = pprint.PrettyPrinter(indent=4)
 # image-path to the Images, which where annotated
-imagepath = "/home/erik/DHd Workshop 2022/images/"
+imagepath = "/home/erik/dhd-2022/beispiel-06/images/"
 # input for the annotation file
 with open('/home/erik/Downloads/annotations.json', 'r') as f:
   data = json.load(f)
