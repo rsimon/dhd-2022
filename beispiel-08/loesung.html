@@ -12,12 +12,35 @@
   <body>
     <h1>Annotorious: Beispiel 8</h1>  
 
+    <p>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    </p>
+
+    <p>
+      <a href="#" onclick="signOut();">Sign out</a>
+    </p>
+
     <img id="hallstatt" src="640px-Hallstatt.jpg">
 
     <script>
       var anno;
 
-      // Helper to create POST request
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+
+        anno.setAuthInfo({
+          id: profile.getId(),
+          displayName: profile.getName()
+        });
+      }
+
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log('User signed out.');
+        });
+      }
+
       var postData = obj => ({
         method: 'POST',
         headers: {
