@@ -32,7 +32,7 @@ Examples for the Annotorious workshop at the [DHd 2022 conference](https://www.d
 ### Weiterführendes Material
 
 - Den Editor anpassen und erweitern:
-  - Editor widgets configurieren: [Guide of annotorious.com](https://recogito.github.io/guides/configuring-the-editor/) 
+  - Editor widgets configurieren: [Guide auf annotorious.com](https://recogito.github.io/guides/configuring-the-editor/) 
   - Editor widgets selbst entwickeln: [Guide auf annotorious.com](https://recogito.github.io/guides/configuring-the-editor/)
 - "Headless Mode": Annotorious ohne den Editor verwenden:
   - [Guide auf annotorious.com](https://recogito.github.io/guides/headless-mode/)
