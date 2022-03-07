@@ -1,0 +1,5 @@
+shapely==1.8.1
+Cython==0.29.28
+opencv-python==4.5.5.62
+matplotlib
+jupyter
