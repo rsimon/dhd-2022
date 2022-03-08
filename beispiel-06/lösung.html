@@ -88,15 +88,38 @@
         // save annotations
         var saveBtn = document.getElementById('saveAnnos');
         saveBtn.addEventListener('click', function() {
+			    var a = document.createElement("a");
+          var annos = anno.getAnnotations();
+			    a.href = window.URL.createObjectURL(new Blob([localStorage["annotations"]], {type: "text/plain"}));
+          var e = document.getElementById("select");
+          var fileName = "annotations.json"
 
+			    a.download = fileName;
+			    a.click(); 
         });
 
 
 
         anno.on('createAnnotation', function(a, overrideId) {
+          // get stored annotations and add new
+          let ls = JSON.parse(localStorage.getItem("annotations"))
+          if (ls[imageName]){
+            ls[imageName][a.id] = a
+          } else {
+            ls[imageName] = {}
+            console.log(ls[imageName]);
+            ls[imageName][a.id] = a
+          }
+          // store annotations back into local storage
+          localStorage.setItem("annotations", JSON.stringify(ls))
         });
 
         anno.on('updateAnnotation', function(a, previous) {
+          // load stored annotations and change updated annotation
+          let ls = JSON.parse(localStorage.getItem("annotations"))
+          ls[imageName][a.id] = a
+          // store back into local storage
+          localStorage.setItem("annotations", JSON.stringify(ls))
         });
 
         anno.on('selectAnnotation', function(a, shape) {
@@ -104,6 +127,12 @@
         });
 
         anno.on('deleteAnnotation', function(a) {
+          // load stored annotations and change updated annotation
+          let ls = JSON.parse(localStorage.getItem("annotations"))
+          // delete annotation
+          delete localStorage.getItem("annotations")[imageName][a.id]
+          // store back into local storage
+          localStorage.setItem("annotations", JSON.stringify(ls))
           
         });
 
