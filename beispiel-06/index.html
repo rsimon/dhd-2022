@@ -50,9 +50,6 @@
       var selectedFiles = []
       window.onload = function() {
         // initiate local storeage if not already initiated
-        if (localStorage.getItem("annotations") === null){
-          localStorage.setItem("annotations", JSON.stringify({}))
-        }
         // initiate OSD with new picture
         viewer = OpenSeadragon({
           id: "openseadragon",
@@ -76,16 +73,6 @@
         });
         anno.setDrawingTool('polygon');
         anno.setDrawingEnabled(true);
-        // load stored annotations
-        let ls = JSON.parse(localStorage.getItem("annotations"))
-        console.log(ls);
-        // choose annotations for chose image if existing
-        if (ls[imageName]){
-          for (var prop in ls[imageName]) {
-            anno.addAnnotation(ls[imageName][prop])
-          }
-        }
-        // save annotations
         var saveBtn = document.getElementById('saveAnnos');
         saveBtn.addEventListener('click', function() {
 
